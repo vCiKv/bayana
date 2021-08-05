@@ -42,7 +42,6 @@ header{
     }
   }
 }
-
 @media (max-width:720px) {
   header{
     span.isBurger{
@@ -72,6 +71,11 @@ header{
     }
   }
   
+}
+.music{
+  img{
+    border-radius: 8px;
+  }
 }
 footer{
   .footerInput{
