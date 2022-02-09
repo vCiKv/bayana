@@ -10,7 +10,12 @@ const firebaseConfig = {
     messagingSenderId: "457858509371",
     appId: "1:457858509371:web:1710e84bc6952e37790a1e"
 };
-firebase.initializeApp(firebaseConfig);
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}else {
+    firebase.app(); // if already initialized, use that one
+}
 
 
 export default firebase
