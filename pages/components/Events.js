@@ -17,27 +17,22 @@ export default function Events() {
         ['6/1/10','nice location','Vancouver', 'CA','#'], 
     ] 
     const getInfo = ()=>{
-       
+       console.log('clicked')
     }
-    const displayEvent = Object.keys(eventData).map(arr=>{
-        return (
-            <SimpleGrid  mb="10"  key={arr} columns={{sm:1,md:4}} spacingX="40px" spacingY="3px"  textAlign={["center",null]}>    
-                <Text as="i" fontSize="20px">{arr}</Text>
-                <Text as="i" fontSize="20px">{eventData[arr].location}</Text>
-                <Text as="i" fontSize="20px">{eventData[arr]}, eventData[arr]} Code</Text>
-                <Button w="115px" variant="outline"  d="block" m='0 auto'><a href={arr[4]}>Get Ticket</a></Button>  
-            </SimpleGrid> 
-        )
-    })
     return(
         <Box w="100%">
             <Heading size="3xl" pb="10" mt="10%">Events </Heading>
-            <Button onClick={getInfo}>get info</Button>
+            {/* <Button onClick={getInfo}>get info</Button> */}
             <Grid>
-                {/* {displayEvent} */}
+            {Object.keys(eventData).map(key=>(
+                <SimpleGrid  mb="10"  key={key} columns={{sm:1,md:4}} spacingX="40px" spacingY="3px"  textAlign={["center",null]}>    
+                    <Text as="i" fontSize="20px">{new Date(eventData[key].date.seconds * 1000).toDateString()}</Text>
+                    <Text as="i" textTransform='capitalize' fontSize="20px">{eventData[key].location}</Text>
+                    <Text as="i" fontSize="20px"><Box as="span" textTransform='capitalize'>{eventData[key].state}</Box>, <Box as="span" textTransform='uppercase'>{eventData[key].countryCode}</Box></Text>
+                    <Button w="115px" variant="outline"  d="block" m='0 auto'><a href={key[4]}>Get Ticket</a></Button>  
+                </SimpleGrid> 
+            ))}
             </Grid>
-        </Box>
-       
-        
+        </Box>    
     )
 }
